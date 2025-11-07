@@ -140,57 +140,8 @@ export default function HomePage() {
         </div>
       </section>
 
-<section className="bg-[#e4dfc7]">
-        {/* Removed container, mx-auto, gap for a full-bleed look */}
-        <div className="grid grid-cols-1 md:grid-cols-2">
-          {/* Product Card */}
-          <div className="order-1 flex items-center justify-center py-10">
-            <ProductBannerCard product={bannerProducts[0]} />
-          </div>
-          {/* Banner Image */}
-          <div className="relative w-full aspect-[4/5] md:aspect-auto order-2">
-            <Image
-              src="/fabric-world-02.jpg"
-              alt="Mini Leather Goods Banner"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="bg-white bg-opacity-70 p-4">
-                <h3 className="font-serif text-2xl md:text-3xl uppercase tracking-widest text-stone-800 text-center">
-                  Mini Leather Goods
-                </h3>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Second Banner Section */}
-      <section className="bg-white">
-        <div className="grid grid-cols-1 md:grid-cols-2">
-          {/* Product Card (Order is swapped) */}
-          <div className="order-1 md:order-2 flex items-center justify-center py-10">
-            <ProductBannerCard product={bannerProducts[2]} />
-          </div>
-          {/* Banner Image (Order is swapped) */}
-          <div className="relative w-full aspect-[4/5] md:aspect-auto order-2 md:order-1">
-            <Image
-              src="/fabric-world-02.jpg"
-              alt="New Arrivals Banner"
-              fill
-              className="object-cover"
-            />
-             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="bg-white bg-opacity-70 p-4">
-                <h3 className="font-serif text-2xl md:text-3xl uppercase tracking-widest text-stone-800 text-center">
-                  New Arrivals
-                </h3>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    
 <section className="py-16 md:py-24 bg-[#e4dfc7]">
       <div className="container mx-auto px-6 text-center">
         {/* --- Titles --- */}
