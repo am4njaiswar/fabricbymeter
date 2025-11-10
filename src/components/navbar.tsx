@@ -183,7 +183,7 @@ export default function Navbar() {
                     >
                       <a
                         href="#"
-                        className="text-sm text-gray-600 hover:text-black transition-all duration-300 inline-block hover:tracking-wider font-light"
+                        className="text-sm font-serif text-gray-600 hover:text-black transition-all duration-300 inline-block hover:tracking-wider font-light"
                       >
                         {item}
                       </a>
