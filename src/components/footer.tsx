@@ -22,7 +22,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-6 py-16">
           <div className="grid grid-cols-4 gap-12">
             <div className="space-y-4">
-              <h3 className="text-sm tracking-[0.2em] uppercase text-black mb-6 font-serif font-semibold ">
+              <h3 className="text-sm tracking-[0.2em] uppercase text-black mb-6 font-serif font-medium ">
                 FabricByMeter
               </h3>
               <p className="text-sm leading-relaxed text-gray-600">
@@ -62,7 +62,7 @@ export default function Footer() {
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-sm  tracking-[0.2em] uppercase text-black mb-6 font-serif font-semibold">
+              <h3 className="text-sm  tracking-[0.2em] uppercase text-black mb-6 font-serif font-medium">
                 Discover
               </h3>
               <ul className="space-y-3">
@@ -86,7 +86,7 @@ export default function Footer() {
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-sm  tracking-[0.2em] uppercase text-black mb-6 font-serif font-semibold">
+              <h3 className="text-sm  tracking-[0.2em] uppercase text-black mb-6 font-serif font-medium">
                 Information
               </h3>
               <ul className="space-y-3">
@@ -111,7 +111,7 @@ export default function Footer() {
               </ul>
             </div>
             <div className="space-y-4">
-              <h3 className="text-sm tracking-[0.2em] uppercase text-black mb-6 font-serif font-semibold">
+              <h3 className="text-sm tracking-[0.2em] uppercase text-black mb-6 font-serif font-medium">
                 Sign Up & Save
               </h3>
               <p className="text-sm text-gray-600 leading-relaxed mb-4">
@@ -124,7 +124,7 @@ export default function Footer() {
                   placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-3 text-sm border border-gray-300 focus:border-black focus:outline-none transition-colors duration-200"
+                  className="w-full px-4 py-3 text-sm border border-gray-300 placeholder:text-gray-700 focus:border-black focus:outline-none transition-colors duration-200"
                 />
                 <button
                   onClick={handleSubscribe}
@@ -145,7 +145,7 @@ export default function Footer() {
               onClick={() => toggleSection("factory")}
               className="w-full py-5 flex items-center justify-between text-left"
             >
-              <span className="text-sm font-serif  font-semibold tracking-[0.15em] uppercase text-black">
+              <span className="text-sm font-serif  font-medium tracking-[0.15em] uppercase text-black">
                 FabricByMeter
               </span>
               <ChevronDown
@@ -202,7 +202,7 @@ export default function Footer() {
               onClick={() => toggleSection("discover")}
               className="w-full py-5 flex items-center justify-between text-left"
             >
-              <span className="text-sm font-serif  font-semibold tracking-[0.15em] uppercase text-black">
+              <span className="text-sm font-serif  font-medium tracking-[0.15em] uppercase text-black">
                 Discover
               </span>
               <ChevronDown
@@ -243,7 +243,7 @@ export default function Footer() {
               onClick={() => toggleSection("information")}
               className="w-full py-5 flex items-center justify-between text-left"
             >
-              <span className="text-sm font-serif  font-semibold tracking-[0.15em] uppercase text-black">
+              <span className="text-sm font-serif  font-medium tracking-[0.15em] uppercase text-black">
                 Information
               </span>
               <ChevronDown
@@ -286,7 +286,7 @@ export default function Footer() {
               onClick={() => toggleSection("signup")}
               className="w-full py-5 flex items-center justify-between text-left"
             >
-              <span className="text-sm  tracking-[0.15em] uppercase text-black font-serif font-semibold">
+              <span className="text-sm  tracking-[0.15em] uppercase text-black font-serif font-medium">
                 Sign Up & Save
               </span>
               <ChevronDown
@@ -311,7 +311,7 @@ export default function Footer() {
                   placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-3 text-sm border border-gray-300 focus:border-black focus:outline-none transition-colors duration-200 text-center"
+                  className="w-full px-4 py-3 text-sm border border-gray-300 placeholder:text-gray-700 focus:border-black focus:outline-none transition-colors duration-200 text-center"
                 />
                 <button
                   onClick={handleSubscribe}

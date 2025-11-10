@@ -244,7 +244,7 @@ export default function Navbar() {
                       />
                     </button>
 
-                    <div className={`bg-gray-50 ml-3 rounded overflow-hidden transition-all duration-400 ease-out ${
+                    <div className={` ml-3 rounded overflow-hidden transition-all duration-400 ease-out ${
                       activeMobileCategory === index ? 'max-h-[500px] opacity-100 mt-2' : 'max-h-0 opacity-0'
                     }`}>
                       {category.items.map((item, itemIndex) => (
