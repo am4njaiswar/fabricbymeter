@@ -2,7 +2,8 @@ import Link from "next/link";
 
 export default function ReturnExchangePage() {
   return (
-    <div className="font-sans bg-white"> {/* Use the same font-sans as your site */}
+    // --- Kept overflow-x-hidden as a safeguard ---
+    <div className="font-sans bg-white overflow-x-hidden">
       <div className="max-w-4xl mx-auto py-12 px-6">
         
         {/* Breadcrumbs */}
@@ -13,8 +14,11 @@ export default function ReturnExchangePage() {
         </div>
 
         {/* Main Heading */}
-        <h1 className="text-3xl md:text-4xl font-bold uppercase text-gray-900 text-center mb-12 tracking-widest">
-          Return/Exchange/Cancellation Policy
+        {/* --- CHANGE: Added a responsive line break --- */}
+        <h1 className="text-2xl md:text-4xl font-bold uppercase text-gray-900 text-center mb-12 tracking-wide md:tracking-widest">
+          Return/Exchange/
+          <br className="md:hidden" /> {/* This breaks the line ONLY on mobile */}
+          Cancellation Policy
         </h1>
 
         {/* Body Text: Formatted to match Terms & Conditions structure */}
@@ -142,14 +146,14 @@ export default function ReturnExchangePage() {
           </div>
 
           <div className="space-y-4 pt-6">
+            <h2 className="text-lg font-semibold uppercase text-gray-900">
+              Cancellation Policy
+            </h2>
             <p>
               Orders once placed cannot be cancelled by the customer. In case an
               item is unavailable we will cancel the order and refund you within
               7-14 days.
             </p>
-          </div>
-          
-          <div className="space-y-4 pt-6">
             <p>
               For COD orders, an order confirmation call/ message will be sent ,
               if not confirmed, the order will be cancelled. COD orders are not
@@ -158,6 +162,9 @@ export default function ReturnExchangePage() {
           </div>
           
           <div className="space-y-4 pt-6">
+            <h2 className="text-lg font-semibold uppercase text-gray-900">
+              Disclaimer
+            </h2>
             <p>
               The information provided on each listing is common for all products
               and is there to assist you but may be inaccurate please contact us
