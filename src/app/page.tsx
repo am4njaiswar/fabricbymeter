@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
+// import Navbar from "@/components/navbar"; // --- DELETED THIS
+// import Footer from "@/components/footer"; // --- DELETED THIS
 
 // --- DUMMY DATA ---
 const products = [
@@ -51,7 +51,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navbar />
+      {/* <Navbar /> --- DELETED THIS --- */}
       <main className="relative flex flex-col items-center justify-center w-full h-[calc(100vh-80px)] md:h-[calc(100vh-136px)] overflow-hidden">
         <Image
           src="/imag3.png"
@@ -155,7 +155,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
       <div className="bg-gray-50 py-1"></div>
+      
       <section className="py-20 md:py-32 bg-[#e4dfc7]">
         <div className="container mx-auto px-6 text-center max-w-7xl">
           <div className="mb-16 md:mb-20">
@@ -221,7 +223,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Footer />
+      {/* <Footer /> --- DELETED THIS --- */}
 
       <style jsx>{`
         @keyframes fadeIn {

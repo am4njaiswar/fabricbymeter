@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ChevronDown, Instagram, Facebook } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   const [openSection, setOpenSection] = useState<string | null>(null);
@@ -16,20 +17,40 @@ export default function Footer() {
     setEmail("");
   };
 
+  // --- LINK DATA ---
+  // Manage all your links here. It updates both Desktop and Mobile views at once.
+  const discoverLinks = [
+    { name: "Our Story", href: "/our-story" },
+    { name: "FAQ's", href: "/faqs" },
+    { name: "Wash Care Instructions", href: "/wash-care" },
+    { name: "Wholesale & Bulk Order", href: "/discover/wholesale-bulk-order" },
+    { name: "Contact Us", href: "/discover/contact-us" },
+  ];
+
+  const informationLinks = [
+    { name: "Terms & Conditions", href: "/information/termsandcondition" },
+    { name: "Privacy Policy", href: "/information/privacypolicy" },
+    { name: "Return/Exchange", href: "/information/return-exchange" }, // <-- Added here
+    { name: "Refund Policy", href: "/information/refund-policy" },
+    { name: "Shipping Policy", href: "/information/shipping-policy" },
+    { name: "Gift Cards", href: "/information/gift-cards" },
+    { name: "Terms of Service", href: "/information/terms-of-service" },
+  ];
+
   return (
-    <footer className="bg-white border-t border-gray-200 ">
+    <footer className="bg-white border-t border-gray-200 font-sans">
       <div className="hidden md:block">
         <div className="max-w-7xl mx-auto px-6 py-16">
           <div className="grid grid-cols-4 gap-12">
-            <div className="space-y-4">
-              <h3 className="text-sm tracking-[0.2em] uppercase text-black mb-6 font-serif font-medium ">
+            <div className="space-y-4 text-center">
+              <h3 className="text-sm tracking-[0.2em] uppercase text-black mb-6 font-sans font-medium">
                 FabricByMeter
               </h3>
               <p className="text-sm leading-relaxed text-gray-600">
                 FabricByMeter is into the manufacturing of Silks and Silk
                 Blends, Cottons, Viscose, velvets, Sustainable fabrics and more.
               </p>
-              <div className="flex gap-4 pt-4">
+              <div className="flex gap-4 pt-4 justify-center">
                 <a
                   href="#"
                   className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:border-black hover:bg-black hover:text-white transition-all duration-300"
@@ -61,57 +82,46 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="space-y-4">
-              <h3 className="text-sm  tracking-[0.2em] uppercase text-black mb-6 font-serif font-medium">
+            {/* Desktop Discover */}
+            <div className="space-y-4 text-center">
+              <h3 className="text-sm tracking-[0.2em] uppercase text-black mb-6 font-sans font-medium">
                 Discover
               </h3>
               <ul className="space-y-3">
-                {[
-                  "Our Story",
-                  "FAQ's",
-                  "Wash Care Instructions",
-                  "Wholesale & Bulk Order",
-                  "Contact Us",
-                ].map((item) => (
-                  <li key={item}>
-                    <a
-                      href="#"
+                {discoverLinks.map((item) => (
+                  <li key={item.name}>
+                    <Link
+                      href={item.href}
                       className="text-sm text-gray-600 hover:text-black transition-colors duration-200 inline-block"
                     >
-                      {item}
-                    </a>
+                      {item.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="space-y-4">
-              <h3 className="text-sm  tracking-[0.2em] uppercase text-black mb-6 font-serif font-medium">
+            {/* Desktop Information */}
+            <div className="space-y-4 text-center">
+              <h3 className="text-sm tracking-[0.2em] uppercase text-black mb-6 font-sans font-medium">
                 Information
               </h3>
               <ul className="space-y-3">
-                {[
-                  "Terms & Conditions",
-                  "Privacy Policy",
-                  "Return/Exchange",
-                  "Refund Policy",
-                  "Shipping Policy",
-                  "Gift Cards",
-                  "Terms of Service",
-                ].map((item) => (
-                  <li key={item}>
-                    <a
-                      href="#"
+                {informationLinks.map((item) => (
+                  <li key={item.name}>
+                    <Link
+                      href={item.href}
                       className="text-sm text-gray-600 hover:text-black transition-colors duration-200 inline-block"
                     >
-                      {item}
-                    </a>
+                      {item.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="space-y-4">
-              <h3 className="text-sm tracking-[0.2em] uppercase text-black mb-6 font-serif font-medium">
+
+            <div className="space-y-4 text-center">
+              <h3 className="text-sm tracking-[0.2em] uppercase text-black mb-6 font-sans font-medium">
                 Sign Up & Save
               </h3>
               <p className="text-sm text-gray-600 leading-relaxed mb-4">
@@ -124,7 +134,7 @@ export default function Footer() {
                   placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-3 text-sm border border-gray-300 placeholder:text-gray-700 focus:border-black focus:outline-none transition-colors duration-200"
+                  className="w-full px-4 py-3 text-sm border border-gray-300 placeholder:text-gray-700 focus:border-black focus:outline-none transition-colors duration-200 text-center"
                 />
                 <button
                   onClick={handleSubscribe}
@@ -138,19 +148,20 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* --- MOBILE VIEW --- */}
       <div className="md:hidden">
         <div className="px-6 py-8">
           <div className="border-b border-gray-200">
             <button
               onClick={() => toggleSection("factory")}
-              className="w-full py-5 flex items-center justify-between text-left"
+              className="w-full py-5 flex items-center justify-center relative text-center"
             >
-              <span className="text-sm font-serif  font-medium tracking-[0.15em] uppercase text-black">
+              <span className="text-sm font-sans font-medium tracking-[0.15em] uppercase text-black">
                 FabricByMeter
               </span>
               <ChevronDown
                 size={20}
-                className={`transform transition-transform duration-300 ${
+                className={`transform transition-transform duration-300 absolute right-0 ${
                   openSection === "factory" ? "rotate-180" : ""
                 }`}
               />
@@ -200,14 +211,14 @@ export default function Footer() {
           <div className="border-b border-gray-200">
             <button
               onClick={() => toggleSection("discover")}
-              className="w-full py-5 flex items-center justify-between text-left"
+              className="w-full py-5 flex items-center justify-center relative text-center"
             >
-              <span className="text-sm font-serif  font-medium tracking-[0.15em] uppercase text-black">
+              <span className="text-sm font-sans font-medium tracking-[0.15em] uppercase text-black">
                 Discover
               </span>
               <ChevronDown
                 size={20}
-                className={`transform transition-transform duration-300 ${
+                className={`transform transition-transform duration-300 absolute right-0 ${
                   openSection === "discover" ? "rotate-180" : ""
                 }`}
               />
@@ -217,21 +228,16 @@ export default function Footer() {
                 openSection === "discover" ? "max-h-96 pb-6" : "max-h-0"
               }`}
             >
+              {/* Mobile Discover Links */}
               <ul className="space-y-3 text-center">
-                {[
-                  "Our Story",
-                  "FAQ's",
-                  "Wash Care Instructions",
-                  "Wholesale & Bulk Order",
-                  "Contact Us",
-                ].map((item) => (
-                  <li key={item}>
-                    <a
-                      href="#"
+                {discoverLinks.map((item) => (
+                  <li key={item.name}>
+                    <Link
+                      href={item.href}
                       className="text-sm text-gray-600 hover:text-black transition-colors duration-200 inline-block"
                     >
-                      {item}
-                    </a>
+                      {item.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -241,14 +247,14 @@ export default function Footer() {
           <div className="border-b border-gray-200">
             <button
               onClick={() => toggleSection("information")}
-              className="w-full py-5 flex items-center justify-between text-left"
+              className="w-full py-5 flex items-center justify-center relative text-center"
             >
-              <span className="text-sm font-serif  font-medium tracking-[0.15em] uppercase text-black">
+              <span className="text-sm font-sans font-medium tracking-[0.15em] uppercase text-black">
                 Information
               </span>
               <ChevronDown
                 size={20}
-                className={`transform transition-transform duration-300 ${
+                className={`transform transition-transform duration-300 absolute right-0 ${
                   openSection === "information" ? "rotate-180" : ""
                 }`}
               />
@@ -258,23 +264,16 @@ export default function Footer() {
                 openSection === "information" ? "max-h-96 pb-6" : "max-h-0"
               }`}
             >
+              {/* Mobile Information Links */}
               <ul className="space-y-3 text-center">
-                {[
-                  "Terms & Conditions",
-                  "Privacy Policy",
-                  "Return/Exchange",
-                  "Refund Policy",
-                  "Shipping Policy",
-                  "Gift Cards",
-                  "Terms of Service",
-                ].map((item) => (
-                  <li key={item}>
-                    <a
-                      href="#"
+                {informationLinks.map((item) => (
+                  <li key={item.name}>
+                    <Link
+                      href={item.href}
                       className="text-sm text-gray-600 hover:text-black transition-colors duration-200 inline-block"
                     >
-                      {item}
-                    </a>
+                      {item.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -284,14 +283,14 @@ export default function Footer() {
           <div className="border-b border-gray-200">
             <button
               onClick={() => toggleSection("signup")}
-              className="w-full py-5 flex items-center justify-between text-left"
+              className="w-full py-5 flex items-center justify-center relative text-center"
             >
-              <span className="text-sm  tracking-[0.15em] uppercase text-black font-serif font-medium">
+              <span className="text-sm tracking-[0.15em] uppercase text-black font-sans font-medium">
                 Sign Up & Save
               </span>
               <ChevronDown
                 size={20}
-                className={`transform transition-transform duration-300 ${
+                className={`transform transition-transform duration-300 absolute right-0 ${
                   openSection === "signup" ? "rotate-180" : ""
                 }`}
               />
