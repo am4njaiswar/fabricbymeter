@@ -82,7 +82,6 @@ export default function WholesaleBulkOrderPage() {
           &times;
         </button>
         <div className="p-6 text-center">
-          {/* --- CHANGE: Added text-gray-900 --- */}
           <p className="text-lg font-semibold mb-2 text-gray-900">Hi, 👋</p>
           <p className="text-sm text-gray-600 mb-4">
             Greetings for the day! We are here to help you. Contact us for any support.
@@ -104,29 +103,28 @@ export default function WholesaleBulkOrderPage() {
 
       {/* --- WHATSAPP ICON (BUTTON) --- */}
       <button
-  onClick={() => setIsPopupOpen(true)} // Toggles the popup
-  className="fixed bottom-6 right-6 z-50 bg-green-500 rounded-full p-3 shadow-lg hover:bg-green-600 transition-colors"
-  aria-label="Open chat popup"
->
-  {/* White WhatsApp SVG Icon */}
-  <svg 
-    width="40" 
-    height="40" 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path 
-      d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.35 3.43 16.84L2.05 22L7.31 20.62C8.75 21.39 10.36 21.81 12.04 21.81C17.5 21.81 21.95 17.36 21.95 11.91C21.95 6.45 17.5 2 12.04 2ZM12.04 20.13C10.53 20.13 9.06 19.74 7.79 19L7.4 18.78L4.5 19.51L5.25 16.7L5.02 16.31C4.3 14.98 3.86 13.48 3.86 11.91C3.86 7.39 7.52 3.73 12.04 3.73C16.56 3.73 20.22 7.39 20.22 11.91C20.22 16.43 16.56 20.13 12.04 20.13ZM17.36 14.23C17.13 14.12 15.98 13.55 15.78 13.48C15.58 13.4 15.43 13.37 15.28 13.6C15.13 13.84 14.6 14.41 14.45 14.58C14.3 14.76 14.15 14.78 13.93 14.67C13.7 14.56 12.79 14.24 11.71 13.26C10.84 12.49 10.24 11.58 10.09 11.35C9.94 11.12 10.06 11 10.18 10.88C10.29 10.77 10.42 10.59 10.58 10.42C10.74 10.25 10.79 10.13 10.89 9.93C10.99 9.73 10.94 9.58 10.87 9.46C10.79 9.35 10.3 8.2 10.1 7.73C9.9 7.26 9.7 7.31 9.56 7.3C9.42 7.29 9.27 7.29 9.12 7.29C8.97 7.29 8.7 7.34 8.48 7.57C8.25 7.81 7.71 8.3 7.71 9.38C7.71 10.45 8.5 11.47 8.62 11.62C8.73 11.76 10.26 14.16 12.59 15.11C14.92 16.05 14.92 15.72 15.25 15.67C15.58 15.62 16.73 15.05 16.93 14.82C17.13 14.6 17.28 14.45 17.36 14.33C17.43 14.22 17.41 14.14 17.36 14.07V14.23Z" 
-      fill="white"
-    />
-  </svg>
-</button>
+        onClick={() => setIsPopupOpen(true)} // Toggles the popup
+        className="fixed bottom-6 right-6 z-50 bg-green-500 rounded-full p-3 shadow-lg hover:bg-green-600 transition-colors"
+        aria-label="Open chat popup"
+      >
+        {/* White WhatsApp SVG Icon */}
+        <svg 
+          width="40" 
+          height="40" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path 
+            d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.35 3.43 16.84L2.05 22L7.31 20.62C8.75 21.39 10.36 21.81 12.04 21.81C17.5 21.81 21.95 17.36 21.95 11.91C21.95 6.45 17.5 2 12.04 2ZM12.04 20.13C10.53 20.13 9.06 19.74 7.79 19L7.4 18.78L4.5 19.51L5.25 16.7L5.02 16.31C4.3 14.98 3.86 13.48 3.86 11.91C3.86 7.39 7.52 3.73 12.04 3.73C16.56 3.73 20.22 7.39 20.22 11.91C20.22 16.43 16.56 20.13 12.04 20.13ZM17.36 14.23C17.13 14.12 15.98 13.55 15.78 13.48C15.58 13.4 15.43 13.37 15.28 13.6C15.13 13.84 14.6 14.41 14.45 14.58C14.3 14.76 14.15 14.78 13.93 14.67C13.7 14.56 12.79 14.24 11.71 13.26C10.84 12.49 10.24 11.58 10.09 11.35C9.94 11.12 10.06 11 10.18 10.88C10.29 10.77 10.42 10.59 10.58 10.42C10.74 10.25 10.79 10.13 10.89 9.93C10.99 9.73 10.94 9.58 10.87 9.46C10.79 9.35 10.3 8.2 10.1 7.73C9.9 7.26 9.7 7.31 9.56 7.3C9.42 7.29 9.27 7.29 9.12 7.29C8.97 7.29 8.7 7.34 8.48 7.57C8.25 7.81 7.71 8.3 7.71 9.38C7.71 10.45 8.5 11.47 8.62 11.62C8.73 11.76 10.26 14.16 12.59 15.11C14.92 16.05 14.92 15.72 15.25 15.67C15.58 15.62 16.73 15.05 16.93 14.82C17.13 14.6 17.28 14.45 17.36 14.33C17.43 14.22 17.41 14.14 17.36 14.07V14.23Z" 
+            fill="white"
+          />
+        </svg>
+      </button>
 
       {/* Hero Section */}
       <div 
         className="relative h-64 md:h-96 flex items-center justify-center text-white bg-cover bg-center"
-        // This is correct. Just make sure 'fabric-rolls-bg.jpg' is in your /public folder.
         style={{ backgroundImage: 'url("/wholesale.webp")' }}
       >
         <div className="absolute inset-0 bg-black opacity-50"></div>
@@ -146,16 +144,18 @@ export default function WholesaleBulkOrderPage() {
         </div>
       </div>
 
-      {/* Breadcrumbs & Content */}
+      {/* Content */}
       <div className="max-w-4xl mx-auto py-12 px-6">
-
+        
+        {/* Content Section */}
         <div className="space-y-10 text-gray-700 text-sm md:text-base leading-relaxed">
           
-          <div className="space-y-4">
+          {/* --- CHANGE: Added text-center, removed pl-4 --- */}
+          <div className="space-y-4 text-center">
             <p className="text-base text-gray-800">
               We at The Fabric By Meter can custom make:
             </p>
-            <p className="pl-4">
+            <p>
               Any fabric for you (silks, brocades, cottons etc)
               <br />
               Digital prints or any other prints
