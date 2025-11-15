@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-// import Navbar from "@/components/navbar"; // --- DELETED THIS
-// import Footer from "@/components/footer"; // --- DELETED THIS
+// Navbar and Footer are removed from here and are in layout.tsx
 
 // --- DUMMY DATA ---
 const products = [
@@ -51,7 +50,6 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* <Navbar /> --- DELETED THIS --- */}
       <main className="relative flex flex-col items-center justify-center w-full h-[calc(100vh-80px)] md:h-[calc(100vh-136px)] overflow-hidden">
         <Image
           src="/imag3.png"
@@ -158,7 +156,8 @@ export default function HomePage() {
 
       <div className="bg-gray-50 py-1"></div>
       
-      <section className="py-20 md:py-32 bg-[#e4dfc7]">
+      {/* --- CHANGE: bg-[#e4dfc7] to bg-white --- */}
+      <section className="py-20 md:py-32 bg-white">
         <div className="container mx-auto px-6 text-center max-w-7xl">
           <div className="mb-16 md:mb-20">
             <span className="text-xs tracking-[0.4em] uppercase text-gray-400 font-light mb-4 block">
@@ -222,8 +221,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* <Footer /> --- DELETED THIS --- */}
 
       <style jsx>{`
         @keyframes fadeIn {
