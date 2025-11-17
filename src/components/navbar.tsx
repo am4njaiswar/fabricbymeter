@@ -83,14 +83,15 @@ export default function Navbar() {
         </div>
 
         {/* --- CENTER (LOGO) --- */}
-        <div className="flex-[2] text-center">
+        <div className="flex-[2] flex justify-center">
           <a href="#" className="text-4xl font-serif font-medium text-gray-800 inline-block transition-transform duration-300 hover:scale-105">
             <Image
-              src="/fabric-by-meter-logo.png"
+              src="/fabricByMeterLogo.jpeg"
               alt="Fabric By Meter Logo"
               width={200}
               height={80}
-              className="mx-auto w-32 h-auto sm:w-40 md:w-48 lg:w-[200px]"
+              className="mx-auto w-32 h-auto sm:w-40 md:w-48 lg:w-[190px]"
+              priority
             />
           </a>
         </div>
@@ -217,7 +218,8 @@ export default function Navbar() {
               isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
             }`} style={{ transitionDelay: '100ms' }}>
               <button
-                className="flex items-center justify-between w-full py-4 text-left text-lg font-medium tracking-widest uppercase text-gray-900 hover:bg-gray-200 transition-colors duration-300"
+                // --- CHANGE: text-lg to text-base ---
+                className="flex items-center justify-between w-full py-4 text-left text-base font-medium tracking-widest uppercase text-gray-900 hover:bg-gray-200 transition-colors duration-300"
                 onClick={() => setMobileShopOpen(!mobileShopOpen)}
               >
                 <span>SHOP</span>
@@ -273,12 +275,12 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* --- "MY PROFILE" IS NOW MAPPED HERE --- */}
+            {/* --- CHANGE: text-lg to text-base --- */}
             {['OUR STORY', 'WHOLESALE', 'CONTACT', 'MY PROFILE'].map((item, index) => (
               <a
                 key={item}
                 href="#"
-                className={`block mx-6 py-4 text-lg font-medium tracking-widest uppercase text-gray-900 border-b border-gray-300 hover:bg-gray-200 transition-all duration-700 ${
+                className={`block mx-6 py-4 text-base font-medium tracking-widest uppercase text-gray-900 border-b border-gray-300 hover:bg-gray-200 transition-all duration-700 ${
                   isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
                 }`}
                 style={{ transitionDelay: `${(index + 2) * 100}ms` }}
@@ -287,10 +289,10 @@ export default function Navbar() {
               </a>
             ))}
 
-            {/* --- "Log in" IS NOW MAPPED HERE --- */}
+            {/* --- CHANGE: text-base to text-sm --- */}
             <a
               href="#"
-              className={`block mx-6 py-4 text-base font-normal text-gray-900 border-b border-gray-300 hover:bg-gray-200 transition-all duration-700 ${
+              className={`block mx-6 py-4 text-sm font-normal text-gray-900 border-b border-gray-300 hover:bg-gray-200 transition-all duration-700 ${
                 isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
               }`}
               style={{ transitionDelay: `${(5 * 100)}ms` }} // Adjusted delay
@@ -298,7 +300,7 @@ export default function Navbar() {
               Log in
             </a>
 
-            {/* --- SOCIAL ICONS ARE NOW MAPPED HERE --- */}
+            {/* --- SOCIAL ICONS --- */}
             <div className={`flex items-center justify-center border-b border-gray-300 mx-6 transition-all duration-700 ${
                   isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
                 }`}
