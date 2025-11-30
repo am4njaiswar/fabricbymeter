@@ -2,17 +2,16 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link"; // Import Link
 import {
   Search,
   User,
   ShoppingCart,
   Facebook,
   Instagram,
-  // Twitter, // Not used
   Menu,
   X,
   ChevronDown,
-  // Pinterest, // Not in lucide
 } from "lucide-react";
 
 // --- PINTEREST SVG COMPONENT ---
@@ -42,6 +41,14 @@ export default function Navbar() {
     { name: "Synthetic", items: ["Polyester", "Nylon", "Rayon", "Acetate"] },
   ];
 
+  // --- HELPER TO CLOSE MENU ---
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+    // Optional: You can choose to reset these or keep them open for next time
+    // setMobileShopOpen(false); 
+    // setActiveMobileCategory(null);
+  };
+
   return (
     <header className="md:relative sticky top-0 z-50 bg-white border-b border-gray-200">
       {/* Top Section - Logo and Icons */}
@@ -49,7 +56,6 @@ export default function Navbar() {
         
         {/* --- LEFT SIDE (HAMBURGER/SEARCH) --- */}
         <div className="flex-1 text-left">
-          {/* Search Button (Desktop Only) */}
           <button className="group transition-transform duration-300 hover:scale-110 hidden md:block">
             <Search
               className="w-5 h-5 text-gray-700 cursor-pointer group-hover:text-gray-900 transition-colors duration-300"
@@ -57,6 +63,7 @@ export default function Navbar() {
             />
           </button>
           
+          {/* Hamburger Button (Mobile Only) */}
           {/* Hamburger Button (Mobile Only) */}
           <button
             onClick={() => {
@@ -67,7 +74,8 @@ export default function Navbar() {
             className="md:hidden p-1 hover:bg-gray-200 rounded transition-all duration-300"
             aria-label="Toggle menu"
           >
-            <div className="relative w-6 h-6">
+            {/* --- CHANGE: Changed <div> to <span> and added 'block' --- */}
+            <span className="relative block w-6 h-6">
               <Menu 
                 className={`w-6 h-6 text-gray-700 absolute transition-all duration-300 ${
                   isMenuOpen ? 'opacity-0 rotate-90 scale-0' : 'opacity-100 rotate-0 scale-100'
@@ -78,22 +86,21 @@ export default function Navbar() {
                   isMenuOpen ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-0'
                 }`}
               />
-            </div>
+            </span>
           </button>
         </div>
 
         {/* --- CENTER (LOGO) --- */}
-        <div className="flex-[2] flex justify-center">
-          <a href="#" className="text-4xl font-serif font-medium text-gray-800 inline-block transition-transform duration-300 hover:scale-105">
+        <div className="flex-[2] text-center">
+          <Link href="/" onClick={closeMenu} className="text-4xl font-serif font-medium text-gray-800 inline-block transition-transform duration-300 hover:scale-105">
             <Image
               src="/fabricByMeterLogo.jpeg"
               alt="Fabric By Meter Logo"
               width={200}
               height={80}
               className="mx-auto w-32 h-auto sm:w-40 md:w-48 lg:w-[190px]"
-              priority
             />
-          </a>
+          </Link>
         </div>
 
         {/* --- RIGHT SIDE (ICONS) --- */}
@@ -135,19 +142,19 @@ export default function Navbar() {
           onMouseEnter={() => setIsShopDropdownOpen(true)}
           onMouseLeave={() => setIsShopDropdownOpen(false)}
         >
-          <button className="flex items-center space-x-1 text-sm tracking-widest uppercase text-black py-2 transition-colors duration-300 hover:text-gray-600">
+          <Link href="/shop" className="flex items-center space-x-1 text-sm tracking-widest uppercase text-black py-2 transition-colors duration-300 hover:text-gray-600">
             <span>SHOP</span>
             <ChevronDown
               className={`w-4 h-4 transition-transform duration-300 ${
                 isShopDropdownOpen ? "rotate-180" : ""
               }`}
             />
-          </button>
+          </Link>
         </div>
-        <a href="#" className="text-sm tracking-widest uppercase text-black transition-colors duration-300 hover:text-gray-600">OUR STORY</a>
-        <a href="#" className="text-sm tracking-widest uppercase text-black transition-colors duration-300 hover:text-gray-600">WHOLESALE</a>
-        <a href="#" className="text-sm tracking-widest uppercase text-black transition-colors duration-300 hover:text-gray-600">CONTACT</a>
-        <a href="#" className="text-sm tracking-widest uppercase text-black transition-colors duration-300 hover:text-gray-600">MY PROFILE</a>
+        <Link href="/our-story" className="text-sm tracking-widest uppercase text-black transition-colors duration-300 hover:text-gray-600">OUR STORY</Link>
+        <Link href="/wholesale" className="text-sm tracking-widest uppercase text-black transition-colors duration-300 hover:text-gray-600">WHOLESALE</Link>
+        <Link href="/contact" className="text-sm tracking-widest uppercase text-black transition-colors duration-300 hover:text-gray-600">CONTACT</Link>
+        <Link href="/profile" className="text-sm tracking-widest uppercase text-black transition-colors duration-300 hover:text-gray-600">MY PROFILE</Link>
       </nav>
 
       {/* Dropdown Content - Desktop Only */}
@@ -217,18 +224,30 @@ export default function Navbar() {
             <div className={`border-b border-gray-300 mx-6 transition-all duration-700 ${
               isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
             }`} style={{ transitionDelay: '100ms' }}>
-              <button
-                // --- CHANGE: text-lg to text-base ---
-                className="flex items-center justify-between w-full py-4 text-left text-base font-medium tracking-widest uppercase text-gray-900 hover:bg-gray-200 transition-colors duration-300"
-                onClick={() => setMobileShopOpen(!mobileShopOpen)}
-              >
-                <span>SHOP</span>
-                <ChevronDown
-                  className={`w-5 h-5 transition-transform duration-300 ${
-                    mobileShopOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
+              
+              {/* --- UPDATED SHOP SECTION: Split text and icon --- */}
+              <div className="flex items-center justify-between w-full py-4 text-left text-base font-medium tracking-widest uppercase text-gray-900 transition-colors duration-300">
+                <Link 
+                  href="/shop" 
+                  onClick={closeMenu} // Navigate and close menu
+                  className="flex-1 h-full" 
+                >
+                  SHOP
+                </Link>
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent navigation when clicking arrow
+                    setMobileShopOpen(!mobileShopOpen);
+                  }}
+                  className="p-2 -mr-2" // Larger touch target
+                >
+                  <ChevronDown
+                    className={`w-5 h-5 transition-transform duration-300 ${
+                      mobileShopOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+              </div>
 
               <div className={`overflow-hidden transition-all duration-500 ease-out ${
                 mobileShopOpen ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
@@ -258,16 +277,17 @@ export default function Navbar() {
                       activeMobileCategory === index ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
                     }`}>
                       {category.items.map((item, itemIndex) => (
-                        <a
+                        <Link
                           key={itemIndex}
-                          href="#"
+                          href="#" // Replace with actual sub-category link
+                          onClick={closeMenu}
                           className={`block pl-4 py-2.5 text-base text-gray-800 hover:bg-gray-100 hover:text-gray-900 transition-all duration-500 ${
                             activeMobileCategory === index ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'
                           }`}
                           style={{ transitionDelay: activeMobileCategory === index ? `${itemIndex * 40}ms` : '0ms' }}
                         >
                           {item}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -275,36 +295,37 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* --- CHANGE: text-lg to text-base --- */}
+            {/* --- MAIN LINKS with onClick={closeMenu} --- */}
             {['OUR STORY', 'WHOLESALE', 'CONTACT', 'MY PROFILE'].map((item, index) => (
-              <a
+              <Link
                 key={item}
-                href="#"
+                href={`/${item.toLowerCase().replace(" ", "-")}`}
+                onClick={closeMenu}
                 className={`block mx-6 py-4 text-base font-medium tracking-widest uppercase text-gray-900 border-b border-gray-300 hover:bg-gray-200 transition-all duration-700 ${
                   isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
                 }`}
                 style={{ transitionDelay: `${(index + 2) * 100}ms` }}
               >
                 {item}
-              </a>
+              </Link>
             ))}
 
-            {/* --- CHANGE: text-base to text-sm --- */}
-            <a
-              href="#"
+            <Link
+              href="/login"
+              onClick={closeMenu}
               className={`block mx-6 py-4 text-sm font-normal text-gray-900 border-b border-gray-300 hover:bg-gray-200 transition-all duration-700 ${
                 isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
               }`}
-              style={{ transitionDelay: `${(5 * 100)}ms` }} // Adjusted delay
+              style={{ transitionDelay: `${(5 * 100)}ms` }}
             >
               Log in
-            </a>
+            </Link>
 
             {/* --- SOCIAL ICONS --- */}
             <div className={`flex items-center justify-center border-b border-gray-300 mx-6 transition-all duration-700 ${
                   isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
                 }`}
-                style={{ transitionDelay: `${(6 * 100)}ms` }} // Adjusted delay
+                style={{ transitionDelay: `${(6 * 100)}ms` }}
             >
               <a 
                 href="#" 
@@ -337,13 +358,14 @@ export default function Navbar() {
           }`} style={{ transitionDelay: '500ms' }}>
             
             <div className="px-6 py-4 space-y-3">
-              <a
-                href="#"
+              <Link
+                href="/cart"
+                onClick={closeMenu}
                 className="flex items-center space-x-3 text-base text-gray-900 font-sans py-2 hover:text-gray-600 transition-all duration-300 group"
               >
                 <ShoppingCart className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" strokeWidth={1.5} />
                 <span>Cart (2)</span>
-              </a>
+              </Link>
             </div>
             
           </div>

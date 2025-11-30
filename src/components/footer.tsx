@@ -20,7 +20,7 @@ export default function Footer() {
   // --- LINK DATA ---
   // Manage all your links here. It updates both Desktop and Mobile views at once.
   const discoverLinks = [
-    { name: "Our Story", href: "/our-story" },
+    { name: "Our Story", href: "/ourstory" },
     { name: "FAQ's", href: "/faqs" },
     { name: "Wash Care Instructions", href: "/wash-care" },
     { name: "Wholesale & Bulk Order", href: "/discover/wholesale-bulk-order" },
