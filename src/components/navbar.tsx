@@ -26,7 +26,6 @@ const PinterestIcon = ({ className }: { className: string }) => (
   </svg>
 );
 
-
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isShopDropdownOpen, setIsShopDropdownOpen] = useState(false);
@@ -41,12 +40,19 @@ export default function Navbar() {
     { name: "Synthetic", items: ["Polyester", "Nylon", "Rayon", "Acetate"] },
   ];
 
-  // --- HELPER TO CLOSE MENU ---
+  // --- 1. DEFINE NAVIGATION LINKS EXPLICITLY ---
+  const navLinks = [
+    { name: "OUR STORY", href: "/ourstory" }, 
+    { name: "WHOLESALE", href: "/wholesale" },
+    { name: "CONTACT", href: "/contact" },
+    { name: "MY PROFILE", href: "/profile" },
+  ];
+
   const closeMenu = () => {
     setIsMenuOpen(false);
-    // Optional: You can choose to reset these or keep them open for next time
-    // setMobileShopOpen(false); 
-    // setActiveMobileCategory(null);
+    setIsShopDropdownOpen(false);
+    setMobileShopOpen(false);
+    setActiveMobileCategory(null);
   };
 
   return (
@@ -62,9 +68,6 @@ export default function Navbar() {
               strokeWidth={1.5}
             />
           </button>
-          
-          {/* Hamburger Button (Mobile Only) */}
-          {/* Hamburger Button (Mobile Only) */}
           <button
             onClick={() => {
               setIsMenuOpen(!isMenuOpen);
@@ -74,8 +77,7 @@ export default function Navbar() {
             className="md:hidden p-1 hover:bg-gray-200 rounded transition-all duration-300"
             aria-label="Toggle menu"
           >
-            {/* --- CHANGE: Changed <div> to <span> and added 'block' --- */}
-            <span className="relative block w-6 h-6">
+            <div className="relative w-6 h-6">
               <Menu 
                 className={`w-6 h-6 text-gray-700 absolute transition-all duration-300 ${
                   isMenuOpen ? 'opacity-0 rotate-90 scale-0' : 'opacity-100 rotate-0 scale-100'
@@ -86,7 +88,7 @@ export default function Navbar() {
                   isMenuOpen ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-0'
                 }`}
               />
-            </span>
+            </div>
           </button>
         </div>
 
@@ -116,14 +118,16 @@ export default function Navbar() {
               <PinterestIcon className="w-4 h-4 text-gray-700" />
             </a>
           </div>
-          <a href="#" className="hidden items-center space-x-1 text-sm text-gray-700 font-sans md:flex hover:text-gray-900 transition-all duration-300 group">
+          <Link href="/login" onClick={closeMenu} className="hidden items-center space-x-1 text-sm text-gray-700 font-sans md:flex hover:text-gray-900 transition-all duration-300 group">
             <User className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" strokeWidth={1.5} />
             <span>Log in</span>
-          </a>
-          <a href="#" className="hidden items-center space-x-1 text-sm text-gray-700 font-sans md:flex hover:text-gray-900 transition-all duration-300 group">
+          </Link>
+
+          {/* --- CHANGE: Switched from <a> to <Link> and added href="/cart" --- */}
+          <Link href="/cart" onClick={closeMenu} className="hidden items-center space-x-1 text-sm text-gray-700 font-sans md:flex hover:text-gray-900 transition-all duration-300 group">
             <ShoppingCart className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" strokeWidth={1.5} />
             <span>Cart (2)</span>
-          </a>
+          </Link>
 
           {/* Search Button (Mobile Only) */}
           <button className="group transition-transform duration-300 hover:scale-110 md:hidden">
@@ -142,7 +146,7 @@ export default function Navbar() {
           onMouseEnter={() => setIsShopDropdownOpen(true)}
           onMouseLeave={() => setIsShopDropdownOpen(false)}
         >
-          <Link href="/shop" className="flex items-center space-x-1 text-sm tracking-widest uppercase text-black py-2 transition-colors duration-300 hover:text-gray-600">
+          <Link href="/shop" onClick={closeMenu} className="flex items-center space-x-1 text-sm tracking-widest uppercase text-black py-2 transition-colors duration-300 hover:text-gray-600">
             <span>SHOP</span>
             <ChevronDown
               className={`w-4 h-4 transition-transform duration-300 ${
@@ -151,10 +155,17 @@ export default function Navbar() {
             />
           </Link>
         </div>
-        <Link href="/our-story" className="text-sm tracking-widest uppercase text-black transition-colors duration-300 hover:text-gray-600">OUR STORY</Link>
-        <Link href="/wholesale" className="text-sm tracking-widest uppercase text-black transition-colors duration-300 hover:text-gray-600">WHOLESALE</Link>
-        <Link href="/contact" className="text-sm tracking-widest uppercase text-black transition-colors duration-300 hover:text-gray-600">CONTACT</Link>
-        <Link href="/profile" className="text-sm tracking-widest uppercase text-black transition-colors duration-300 hover:text-gray-600">MY PROFILE</Link>
+        {/* --- 2. UPDATED DESKTOP LOOP --- */}
+        {navLinks.map((link) => (
+          <Link 
+            key={link.name} 
+            href={link.href} 
+            onClick={closeMenu}
+            className="text-sm tracking-widest uppercase text-black transition-colors duration-300 hover:text-gray-600"
+          >
+            {link.name}
+          </Link>
+        ))}
       </nav>
 
       {/* Dropdown Content - Desktop Only */}
@@ -225,21 +236,21 @@ export default function Navbar() {
               isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
             }`} style={{ transitionDelay: '100ms' }}>
               
-              {/* --- UPDATED SHOP SECTION: Split text and icon --- */}
+              {/* --- SHOP SECTION --- */}
               <div className="flex items-center justify-between w-full py-4 text-left text-base font-medium tracking-widest uppercase text-gray-900 transition-colors duration-300">
                 <Link 
                   href="/shop" 
-                  onClick={closeMenu} // Navigate and close menu
+                  onClick={closeMenu} 
                   className="flex-1 h-full" 
                 >
                   SHOP
                 </Link>
                 <button 
                   onClick={(e) => {
-                    e.stopPropagation(); // Prevent navigation when clicking arrow
+                    e.stopPropagation(); 
                     setMobileShopOpen(!mobileShopOpen);
                   }}
-                  className="p-2 -mr-2" // Larger touch target
+                  className="p-2 -mr-2" 
                 >
                   <ChevronDown
                     className={`w-5 h-5 transition-transform duration-300 ${
@@ -279,7 +290,7 @@ export default function Navbar() {
                       {category.items.map((item, itemIndex) => (
                         <Link
                           key={itemIndex}
-                          href="#" // Replace with actual sub-category link
+                          href="#" 
                           onClick={closeMenu}
                           className={`block pl-4 py-2.5 text-base text-gray-800 hover:bg-gray-100 hover:text-gray-900 transition-all duration-500 ${
                             activeMobileCategory === index ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'
@@ -295,18 +306,18 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* --- MAIN LINKS with onClick={closeMenu} --- */}
-            {['OUR STORY', 'WHOLESALE', 'CONTACT', 'MY PROFILE'].map((item, index) => (
+            {/* --- 3. UPDATED MOBILE LOOP --- */}
+            {navLinks.map((link, index) => (
               <Link
-                key={item}
-                href={`/${item.toLowerCase().replace(" ", "-")}`}
+                key={link.name}
+                href={link.href}
                 onClick={closeMenu}
                 className={`block mx-6 py-4 text-base font-medium tracking-widest uppercase text-gray-900 border-b border-gray-300 hover:bg-gray-200 transition-all duration-700 ${
                   isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
                 }`}
                 style={{ transitionDelay: `${(index + 2) * 100}ms` }}
               >
-                {item}
+                {link.name}
               </Link>
             ))}
 
@@ -316,7 +327,7 @@ export default function Navbar() {
               className={`block mx-6 py-4 text-sm font-normal text-gray-900 border-b border-gray-300 hover:bg-gray-200 transition-all duration-700 ${
                 isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
               }`}
-              style={{ transitionDelay: `${(5 * 100)}ms` }}
+              style={{ transitionDelay: `${(navLinks.length + 2) * 100}ms` }}
             >
               Log in
             </Link>
@@ -325,7 +336,7 @@ export default function Navbar() {
             <div className={`flex items-center justify-center border-b border-gray-300 mx-6 transition-all duration-700 ${
                   isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
                 }`}
-                style={{ transitionDelay: `${(6 * 100)}ms` }}
+                style={{ transitionDelay: `${(navLinks.length + 3) * 100}ms` }}
             >
               <a 
                 href="#" 
