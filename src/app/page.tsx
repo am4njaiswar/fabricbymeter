@@ -10,38 +10,38 @@ const products = [
     id: 1,
     name: "Natural Linen Fabric",
     price: "$25.00",
-    image: "/fabricImage.jpg",
+    image: "/NaturalLinenFabric.jpg",
     tag: "Best Seller",
   },
   {
     id: 2,
     name: "Cotton Floral Print",
     price: "$18.00",
-    image: "/fabric-world-02.jpg",
+    image: "/CottonFloralPrint.jpg",
     tag: "Best Seller",
   },
   {
     id: 3,
     name: "Silk Charmeuse",
     price: "$45.00",
-    image: "/fabricImage.jpg",
+    image: "/SilkCharmeuse.jpg",
     tag: "Best Seller",
   },
   {
     id: 4,
     name: "Merino Wool Blend",
     price: "$32.00",
-    image: "/fabric-world-02.jpg",
+    image: "/MerinoWoolBlend.jpg",
     tag: "Best Seller",
   },
 ];
 
 const instagramImages = [
-  { id: 1, src: "/fabricImage.jpg", alt: "Fabric on a textured surface" },
-  { id: 2, src: "/fabric-world-02.jpg", alt: "Close-up of a woven fabric" },
-  { id: 3, src: "/fabricImage.jpg", alt: "Colorful threads and yarns" },
-  { id: 4, src: "/fabric-world-02.jpg", alt: "Sewing machine in action" },
-  { id: 5, src: "/fabricImage.jpg", alt: "Stack of folded fabrics" },
+  { id: 1, src: "/fabric1.jpg", alt: "Fabric on a textured surface" },
+  { id: 2, src: "/fabric2.jpg", alt: "Close-up of a woven fabric" },
+  { id: 3, src: "/fabric3.jpg", alt: "Colorful threads and yarns" },
+  { id: 4, src: "/fabric4.jpg", alt: "Sewing machine in action" },
+  { id: 5, src: "/fabric5.jpg", alt: "Stack of folded fabrics" },
   { id: 6, src: "/fabric-world-02.jpg", alt: "Person measuring fabric" },
 ];
 

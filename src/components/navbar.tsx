@@ -57,10 +57,8 @@ export default function Navbar() {
 
   return (
     <header className="md:relative sticky top-0 z-50 bg-white border-b border-gray-200">
-      {/* Top Section - Logo and Icons */}
       <div className="flex items-center justify-between h-16 sm:h-20 px-4 sm:px-6 lg:px-10">
         
-        {/* --- LEFT SIDE (HAMBURGER/SEARCH) --- */}
         <div className="flex-1 text-left">
           <button className="group transition-transform duration-300 hover:scale-110 hidden md:block">
             <Search
@@ -92,7 +90,6 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* --- CENTER (LOGO) --- */}
         <div className="flex-[2] text-center">
           <Link href="/" onClick={closeMenu} className="text-4xl font-serif font-medium text-gray-800 inline-block transition-transform duration-300 hover:scale-105">
             <Image
@@ -105,7 +102,6 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* --- RIGHT SIDE (ICONS) --- */}
         <div className="flex items-center justify-end flex-1 space-x-3 sm:space-x-5">
           <div className="hidden space-x-4 md:flex">
             <a href="#" aria-label="Facebook" className="transition-all duration-300 hover:opacity-70 hover:scale-110">
@@ -123,13 +119,11 @@ export default function Navbar() {
             <span>Log in</span>
           </Link>
 
-          {/* --- CHANGE: Switched from <a> to <Link> and added href="/cart" --- */}
           <Link href="/cart" onClick={closeMenu} className="hidden items-center space-x-1 text-sm text-gray-700 font-sans md:flex hover:text-gray-900 transition-all duration-300 group">
             <ShoppingCart className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" strokeWidth={1.5} />
             <span>Cart (2)</span>
           </Link>
 
-          {/* Search Button (Mobile Only) */}
           <button className="group transition-transform duration-300 hover:scale-110 md:hidden">
             <Search
               className="w-5 h-5 text-gray-700 cursor-pointer group-hover:text-gray-900 transition-colors duration-300"
@@ -139,23 +133,21 @@ export default function Navbar() {
         </div>
       </div>
       
-      {/* Main Navigation - Desktop Only */}
       <nav className="hidden items-center justify-center h-14 space-x-10 font-sans bg-white md:flex font-medium relative">
         <div
           className="relative"
-          onMouseEnter={() => setIsShopDropdownOpen(true)}
-          onMouseLeave={() => setIsShopDropdownOpen(false)}
         >
           <Link href="/shop" onClick={closeMenu} className="flex items-center space-x-1 text-sm tracking-widest uppercase text-black py-2 transition-colors duration-300 hover:text-gray-600">
             <span>SHOP</span>
             <ChevronDown
+            onMouseEnter={() => setIsShopDropdownOpen(true)}
+          onMouseLeave={() => setIsShopDropdownOpen(false)}
               className={`w-4 h-4 transition-transform duration-300 ${
                 isShopDropdownOpen ? "rotate-180" : ""
               }`}
             />
           </Link>
         </div>
-        {/* --- 2. UPDATED DESKTOP LOOP --- */}
         {navLinks.map((link) => (
           <Link 
             key={link.name} 
@@ -168,7 +160,6 @@ export default function Navbar() {
         ))}
       </nav>
 
-      {/* Dropdown Content - Desktop Only */}
       <div
         className={`hidden md:block absolute top-[136px] left-0 w-full bg-white shadow-lg 
                   transition-all duration-500 ease-out
@@ -225,18 +216,15 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile & Tablet Menu */}
       <div className={`fixed top-16 sm:top-20 left-0 w-5/6 max-w-md bottom-0 bg-white md:hidden overflow-y-auto z-40 shadow-lg transition-all duration-700 ease-out ${
         isMenuOpen ? 'opacity-100 translate-x-0 visible' : 'opacity-0 -translate-x-full invisible'
       }`}>
         <nav className="flex flex-col h-full">
-          {/* --- MAIN SCROLLING AREA --- */}
           <div className="flex-1 overflow-y-auto">
             <div className={`border-b border-gray-300 mx-6 transition-all duration-700 ${
               isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
             }`} style={{ transitionDelay: '100ms' }}>
               
-              {/* --- SHOP SECTION --- */}
               <div className="flex items-center justify-between w-full py-4 text-left text-base font-medium tracking-widest uppercase text-gray-900 transition-colors duration-300">
                 <Link 
                   href="/shop" 
@@ -305,8 +293,6 @@ export default function Navbar() {
                 ))}
               </div>
             </div>
-
-            {/* --- 3. UPDATED MOBILE LOOP --- */}
             {navLinks.map((link, index) => (
               <Link
                 key={link.name}
@@ -332,7 +318,6 @@ export default function Navbar() {
               Log in
             </Link>
 
-            {/* --- SOCIAL ICONS --- */}
             <div className={`flex items-center justify-center border-b border-gray-300 mx-6 transition-all duration-700 ${
                   isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
                 }`}
@@ -363,7 +348,6 @@ export default function Navbar() {
 
           </div>
 
-          {/* --- BOTTOM SECTION (CART ONLY) --- */}
           <div className={`border-t-2 border-gray-400 bg-white transition-all duration-700 ${
             isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`} style={{ transitionDelay: '500ms' }}>
