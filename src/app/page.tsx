@@ -52,7 +52,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-white">
       <main className="relative flex flex-col items-center justify-center w-full h-[calc(100vh-80px)] md:h-[calc(100vh-136px)] overflow-hidden">
         <Image
-          src="/imag3.png"
+          src="/hero-image.png"
           alt="Background"
           fill
           className="object-cover"
